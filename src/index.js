@@ -18,20 +18,34 @@ class Square extends React.Component {
       <button
         className='square'
         onClick={() => {
-          console.log("click")
+          //   console.log("click")
           // 四角にXを表示
-          this.setState({ value: "X" })
+          this.props.onClick()
         }}
       >
-        {this.state.value /* stateで値取得 */}
+        {this.props.value /* propsで値取得 */}
       </button>
     )
   }
 }
 
 class Board extends React.Component {
+  // マス内の値をクリアする
+  constructor(props) {
+    super(props)
+    this.state = {
+      squares: Array(9).fill(null),
+    }
+  }
+
+  handleClick(i) {
+    const squares = this.state.squares.slice()
+    squares[i] = "X"
+    this.setState({ squares: squares })
+  }
+
   renderSquare(i) {
-    return <Square value={i} />
+    return <Square value={this.state.squares[i]} onClick={() => this.handleClick(i)} />
   }
 
   render() {
