@@ -3,23 +3,11 @@ import ReactDOM from "react-dom/client"
 import "./index.css"
 
 class Square extends React.Component {
-  //コンストラクタ
-  constructor(props) {
-    // サブクラスのコンストラクタを定義する際は常にsuperを呼び出す
-    super(props)
-    // Reactコンポーネントで状態を持つために設定
-    // stateの初期化
-    this.state = {
-      value: null,
-    }
-  }
   render() {
     return (
       <button
         className='square'
         onClick={() => {
-          //   console.log("click")
-          // 四角にXを表示
           this.props.onClick()
         }}
       >
