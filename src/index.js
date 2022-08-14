@@ -15,8 +15,15 @@ class Square extends React.Component {
   }
   render() {
     return (
-      <button className='square' onClick={() => console.log("click")}>
-        {this.props.value /* propsで値取得 */}
+      <button
+        className='square'
+        onClick={() => {
+          console.log("click")
+          // 四角にXを表示
+          this.setState({ value: "X" })
+        }}
+      >
+        {this.state.value /* stateで値取得 */}
       </button>
     )
   }
